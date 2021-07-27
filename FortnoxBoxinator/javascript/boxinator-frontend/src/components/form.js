@@ -1,6 +1,20 @@
 import React, { Component } from "react";
 
 class BoxForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: "" };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  //TODO Fix convertion from hex to rgb
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+  handleSubmit(event) {
+    alert("A box was submitted: " + this.state.value);
+    event.preventDefault();
+  }
   render() {
     return (
       <div>
