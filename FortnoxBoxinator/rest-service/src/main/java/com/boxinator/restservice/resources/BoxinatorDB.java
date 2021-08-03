@@ -2,7 +2,7 @@ package com.boxinator.restservice.resources;
 import java.sql.*;
 import java.util.ArrayList;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
+//import com.mysql.cj.jdbc.MysqlDataSource;
 
 public class BoxinatorDB
 {
@@ -43,12 +43,17 @@ public class BoxinatorDB
     private static Connection connectDB()
     {
         try {
-            MysqlDataSource dataSource = new MysqlDataSource();
+        	Class.forName("com.mysql.jdbc.Driver");  
+        	Connection connection = DriverManager.getConnection(  
+        	"jdbc:mysql://localhost:3306/boxinatorDB","root","test123");  
+        	//here sonoo is database name, root is username and password   
+        	
+            /*MysqlDataSource dataSource = new MysqlDataSource();
             dataSource.setUser("root");
             dataSource.setPassword("test123");
             dataSource.setServerName("localhost");
             dataSource.setDatabaseName("boxinatorDB");
-            Connection connection = dataSource.getConnection();
+            Connection connection = dataSource.getConnection();*/
             return connection;
         }catch(Exception e)
         {

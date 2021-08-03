@@ -16,8 +16,8 @@ public class BoxinatorController {
     public BoxinatorApi boxinatorApi(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new BoxinatorApi(counter.incrementAndGet(), String.format(template, name));
     }
-    /*@PostMapping("/addbox")
+    @PostMapping("/addbox")
     public BoxinatorApi boxinatorApi(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new BoxinatorApi(counter.incrementAndGet(), String.format(template, name));
-    }*/
+    }
 }
