@@ -1,35 +1,8 @@
 import React, { Component } from "react";
-import { connect } from "redux-form";
-import { Field, reduxForm } from "redux-form";
+import hexRgb from "hex-rgb";
 
 //TODO initialize redux form, maybe remove keys and change the select,
 //TODO Fix a reducer that creates the prize for the box based on country box weight * country multiplier
-const countryOptions = [
-  {
-    label: "Sweden",
-    key: "sweden",
-    value: "sweden",
-  },
-
-  {
-    label: "China",
-    key: "china",
-    value: "china",
-  },
-
-  {
-    label: "Brazil",
-    key: "brazil",
-    value: "brazil",
-  },
-
-  {
-    label: "Australia",
-    key: "australia",
-    value: "australia",
-  },
-];
-
 class BoxForm extends Component {
   constructor(props) {
     super(props);
@@ -43,22 +16,24 @@ class BoxForm extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   //TODO Fix convertion from hex to rgb
   handleInputChange(event) {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    console.log(value);
     this.setState({
       [name]: value,
     });
   }
   handleSubmit(event) {
-    console.log(this.state.receivername + " " + this.state.boxweight);
+    const rgbColor = hexRgb(this.state.boxcolour);
     let box = {
       receiver: this.state.receiver,
       weight: this.state.boxweight,
-      color: this.state.boxcolour,
+      red: rgbColor.red,
+      green: rgbColor.green,
+      blue: rgbColor.blue,
       country: this.state.receivercountry,
     };
     alert(JSON.stringify(box));
@@ -106,11 +81,10 @@ class BoxForm extends Component {
               component="select"
               onChange={this.handleInputChange}
             >
-              {countryOptions.map((countryOptions) => (
-                <option value={countryOptions.value}>
-                  {countryOptions.label}
-                </option>
-              ))}
+              <option value="sweden">Sweden</option>
+              <option value="china">China</option>
+              <option value="brazil">Brazil</option>
+              <option value="australia"> Australia</option>
             </select>
           </label>
           <input type="submit" value="Submit"></input>
