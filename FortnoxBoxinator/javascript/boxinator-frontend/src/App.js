@@ -3,6 +3,7 @@ import "./App.less";
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import BoxForm from "./components/form";
 import BoxList from "./components/list";
+//import TestForm from "./components/formTest";
 
 class App extends Component {
   render() {

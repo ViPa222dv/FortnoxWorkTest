@@ -4,8 +4,10 @@ import "./index.less";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./reducers/store";
+import { createStore } from "redux";
 import { Provider } from "react-redux";
 
+//let store = createStore();
 ReactDOM.render(
   <Provider store={store}>
     <App />
