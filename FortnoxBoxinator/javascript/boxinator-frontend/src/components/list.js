@@ -1,10 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+import "./componentsStyle.less";
+import ListData from "./listData";
 
 class BoxList extends Component {
   render() {
     return (
       <div>
-        <h1>This will be a list</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Receiver</th>
+              <th>Weight</th>
+              <th>Box colour</th>
+              <th>Shipping cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ListData></ListData>
+          </tbody>
+        </table>
       </div>
     );
   }
