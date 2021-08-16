@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FortnoxBoxinator.iml" filepath="$PROJECT_DIR$/.idea/FortnoxBoxinator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boxinator/boxinator.iml" filepath="$PROJECT_DIR$/boxinator/boxinator.iml" />
     </modules>
   </component>
 </project>
