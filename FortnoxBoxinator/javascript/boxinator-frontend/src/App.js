@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <HashRouter>
         <div className="App">
-          <ul className="nav">
+          <ul class="nav">
             <li>
               <NavLink to="addbox">Form</NavLink>
             </li>

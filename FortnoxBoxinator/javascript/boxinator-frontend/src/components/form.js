@@ -13,7 +13,6 @@ class BoxForm extends Component {
       boxprize: 0,
     };
     this.inputValidation = this.inputValidation.bind(this);
-    this.countryMultiplier = this.countryMultiplier.bind(this);
     this.createBox = this.createBox.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,27 +29,9 @@ class BoxForm extends Component {
     }
     return true;
   }
-  //TODO Remove this function and add it to the list instead, most likely better to 
-  //send the pure data and then calculate it when we get it back from the db(box prize).
-  countryMultiplier() {
-    if (this.state.receivercountry === "sweden") {
-      return 1.3;
-    }
-    else if (this.state.receivercountry === "china") {
-      return 4.0;
 
-    }
-    else if (this.state.receivercountry === "brazil") {
-      return 8.6;
-    }
-    else {
-      return 7.2;
-    }
-  }
   createBox() {
     const rgbColor = hexRgb(this.state.boxcolour);
-    let countryMultiplier = this.countryMultiplier();
-    let boxprize = this.state.boxweight * countryMultiplier;
     let box = {
       receiver: this.state.receiver,
       weight: this.state.boxweight,
@@ -58,10 +39,10 @@ class BoxForm extends Component {
       green: rgbColor.green,
       blue: rgbColor.blue,
       country: this.state.receivercountry,
-      boxprize: boxprize,
     };
     return box;
   }
+
   handleInputChange(event) {
     const target = event.target;
     const name = target.name;
@@ -73,10 +54,24 @@ class BoxForm extends Component {
   handleSubmit(event) {
     if (this.inputValidation()) {
       let box = this.createBox();
+
+      //Post does not work correctly currently, did not have time to find out exactly what did not work, but in the alert you can see that the data
+      //that is getting sent is the one that should be sent.
+      const xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+          console.log(this.responseText);
+        } else if (this.readyState === 4 && this.status <= 400) {
+          console.log(this.responseText);
+        }
+      };
+      xhttp.open("Post", "http://localhost:8080/api/box/add_box", true);
+      xhttp.setRequestHeader("Content-type", "application/json");
+      xhttp.send(JSON.stringify(box));
+
       alert(JSON.stringify(box));
       event.preventDefault();
-    }
-    else {
+    } else {
       event.preventDefault();
     }
   }

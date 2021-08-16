@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/FortnoxWorkTest.iml" filepath="$PROJECT_DIR$/.idea/FortnoxWorkTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/FortnoxBoxinator.iml" filepath="$PROJECT_DIR$/.idea/FortnoxBoxinator.iml" />
     </modules>
   </component>
 </project>
