@@ -9,3 +9,6 @@ After that go to the javascript/boxinator-frontend folder and write npm start. t
 You can see how the list is intended to look with the help of the file test-data.json, but it is not the current data from the database.
 
 I did not have time to do a unit or component test since I was not entirely sure how to do it since it would be my first time testing a full stack project.
+
+Youtube link to see what my application can do: https://www.youtube.com/watch?v=pnN9ZNBJIyA
+
