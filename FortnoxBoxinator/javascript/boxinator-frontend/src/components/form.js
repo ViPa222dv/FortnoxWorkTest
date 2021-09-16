@@ -2,45 +2,43 @@ import React, { Component } from "react";
 import hexRgb from "hex-rgb";
 //TODO initialize redux form, maybe remove keys and change the select,
 //TODO Fix a reducer that creates the prize for the box based on country box weight * country multiplier
-class BoxForm extends Component {
+class PlayerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      receiver: "",
-      boxweight: "",
-      boxcolour: "#0000ff",
-      receivercountry: "sweden",
-      boxprize: 0,
+      player: "",
+      length: "",
+      weight: "",
+      club: "",
+      position: "goalkeeper",
     };
     this.inputValidation = this.inputValidation.bind(this);
-    this.createBox = this.createBox.bind(this);
+    this.createBox = this.createPlayer.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   inputValidation() {
-    let weight = document.forms["boxform"]["boxweight"].value;
+    let weight = document.forms["playerform"]["weight"].value;
     if (weight <= 0) {
       this.setState({
         boxweight: 0,
       });
-      alert("A box can't have 0 or negative weight, try again!");
+      alert("A player can't weigth 0 or less, try again!");
       return false;
     }
     return true;
   }
 
-  createBox() {
-    const rgbColor = hexRgb(this.state.boxcolour);
-    let box = {
+  createPlayer() {
+    let player = {
       receiver: this.state.receiver,
-      weight: this.state.boxweight,
-      red: rgbColor.red,
-      green: rgbColor.green,
-      blue: rgbColor.blue,
-      country: this.state.receivercountry,
+      length: this.state.length,
+      weight: this.state.weight,
+      club: this.state.club,
+      position: this.state.position,
     };
-    return box;
+    return player;
   }
 
   handleInputChange(event) {
@@ -57,7 +55,7 @@ class BoxForm extends Component {
 
       //Post does not work correctly currently, did not have time to find out exactly what did not work, but in the alert you can see that the data
       //that is getting sent is the one that should be sent.
-      const xhttp = new XMLHttpRequest();
+      /*const xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
           console.log(this.responseText);
@@ -70,7 +68,7 @@ class BoxForm extends Component {
       xhttp.send(JSON.stringify(box));
 
       alert(JSON.stringify(box));
-      event.preventDefault();
+      event.preventDefault();*/
     } else {
       event.preventDefault();
     }
@@ -78,51 +76,63 @@ class BoxForm extends Component {
   render() {
     return (
       <div>
-        <form name={"boxform"} onSubmit={this.handleSubmit}>
+        <form name={"playerform"} onSubmit={this.handleSubmit}>
           <label>
             Name
             <input
-              name={"receiver"}
+              name={"name"}
               type={"text"}
               required
-              value={this.state.receiver}
+              value={this.state.name}
               onChange={this.handleInputChange}
             />
           </label>
           <br />
           <label>
-            Weight
+            Length
             <input
-              name={"boxweight"}
+              name={"length"}
               type={"number"}
               required
-              value={this.state.boxweight}
+              value={this.state.length}
               onChange={this.handleInputChange}
             />
           </label>
           <br />
+          <br />
           <label>
-            Box colour
+            Weigth
             <input
-              name={"boxcolour"}
-              type={"color"}
+              name={"weigth"}
+              type={"number"}
               required
-              value={this.state.boxcolour}
+              value={this.state.weight}
               onChange={this.handleInputChange}
             />
           </label>
           <br />
           <label>
-            Country
+            Club
+            <input
+              name={"club"}
+              type={"text"}
+              required
+              value={this.state.weight}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <label>
+            Position
             <select
-              name={"receivercountry"}
-              value={this.state.receivercountry}
+              name={"position"}
+              value={this.state.position}
               onChange={this.handleInputChange}
             >
-              <option value="sweden">Sweden</option>
-              <option value="china">China</option>
-              <option value="brazil">Brazil</option>
-              <option value="australia"> Australia</option>
+              <option value="goalkeeper">Goalkeeper</option>
+              <option value="defender">Defender</option>
+              <option value="midfielder">Midfielder</option>
+              <option value="forward">Forward</option>
             </select>
           </label>
           <input type="submit" value="Submit"></input>
@@ -132,4 +142,4 @@ class BoxForm extends Component {
   }
 }
 
-export default BoxForm;
+export default PlayerForm;

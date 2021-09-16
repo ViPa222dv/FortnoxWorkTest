@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.less";
 import { Route, NavLink, HashRouter } from "react-router-dom";
-import BoxForm from "./components/form";
-import BoxList from "./components/list";
+import PlayerForm from "./components/form";
+import PlayerList from "./components/list";
 
 class App extends Component {
   render() {
@@ -11,15 +11,15 @@ class App extends Component {
         <div className="App">
           <ul class="nav">
             <li>
-              <NavLink to="addbox">Form</NavLink>
+              <NavLink to="addplayer">Form</NavLink>
             </li>
             <li>
-              <NavLink to="listboxes">List</NavLink>
+              <NavLink to="playerlist">List</NavLink>
             </li>
           </ul>
           <div className="content">
-            <Route path="/addbox" component={BoxForm} />
-            <Route path="/listboxes" component={BoxList} />
+            <Route path="/addplayer" component={PlayerForm} />
+            <Route path="/playerlist" component={PlayerList} />
           </div>
         </div>
       </HashRouter>

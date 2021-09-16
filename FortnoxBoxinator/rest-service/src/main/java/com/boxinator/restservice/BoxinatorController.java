@@ -1,0 +1,23 @@
+package com.boxinator.restservice;
+
+import java.util.concurrent.atomic.AtomicLong;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class BoxinatorController {
+
+    private static final String template = "Hello, %s!";
+    private final AtomicLong counter = new AtomicLong();
+
+    @GetMapping("/listboxes")
+    public BoxinatorApi boxinatorApi(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return new BoxinatorApi(counter.incrementAndGet(), String.format(template, name));
+    }
+    @PostMapping("/addbox")
+    public BoxinatorApi boxinatorApi(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return new BoxinatorApi(counter.incrementAndGet(), String.format(template, name));
+    }
+}

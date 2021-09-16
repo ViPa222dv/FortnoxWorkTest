@@ -4,17 +4,18 @@ import ListData from "./listData";
 import "../App.less";
 
 //I had no time to add the actuall styling to the application, but I managed to make most of the core functions to work.
-class BoxList extends Component {
+class PlayerList extends Component {
   render() {
     return (
       <div>
         <table>
           <thead>
             <tr>
-              <th>Receiver</th>
+              <th>Name</th>
+              <th>Length</th>
               <th>Weight</th>
-              <th>Box colour</th>
-              <th>Shipping cost</th>
+              <th>Club</th>
+              <th>Position</th>
             </tr>
           </thead>
           <tbody>
@@ -26,4 +27,4 @@ class BoxList extends Component {
   }
 }
 
-export default BoxList;
+export default PlayerList;
