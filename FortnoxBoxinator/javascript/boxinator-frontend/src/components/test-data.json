@@ -1,34 +1,30 @@
 [
   {
-    "receiver": "John",
-    "weight": 2.5,
-    "red": 0,
-    "green": 255,
-    "blue": 20,
-    "country": "australia"
+    "name": "John Long",
+    "length": 187.6,
+    "weigth": 83.5,
+    "club": "Malmö FF",
+    "position": "goalkeeper"
   },
   {
-    "receiver": "Doe",
-    "weight": 5.2,
-    "red": 255,
-    "green": 255,
-    "blue": 20,
-    "country": "brazil"
+    "name": "Hon Song",
+    "length": 180.3,
+    "weigth": 88.9,
+    "club": "Arsenal",
+    "position": "defender"
   },
   {
-    "receiver": "Blond",
-    "weight": 1.8,
-    "red": 60,
-    "green": 90,
-    "blue": 255,
-    "country": "sweden"
+    "name": "John",
+    "length": 177.6,
+    "weigth": 70.5,
+    "club": "Manchester United",
+    "position": "forward"
   },
   {
-    "receiver": "Long",
-    "weight": 3,
-    "red": 155,
-    "green": 10,
-    "blue": 155,
-    "country": "china"
+    "name": "John",
+    "length": 195,
+    "weigth": 92,
+    "club": "Borussia Dortmund",
+    "position": "midfielder"
   }
 ]
