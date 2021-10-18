@@ -2,7 +2,7 @@ import React, { Component, useState } from "react";
 import ListData from "./listData";
 
 //I had no time to add the actuall styling to the application, but I managed to make most of the core functions to work.
-class PlayerList extends Component {
+class FootballList extends Component {
   render() {
     return (
       <div>
@@ -25,4 +25,4 @@ class PlayerList extends Component {
   }
 }
 
-export default PlayerList;
+export default FootballList;

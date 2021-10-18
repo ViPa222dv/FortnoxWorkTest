@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import "../assets/less/formStyle.less";
 
-class PlayerForm extends Component {
+class FootballForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      length: "",
-      weight: "",
-      club: "",
-      position: "goalkeeper",
+      receiver: "",
+      age: "",
+      country: "finland",
+      brand: "Select",
+      size: "4",
+      colors: "goalkeeper",
     };
     this.inputValidation = this.inputValidation.bind(this);
     this.createPlayer = this.createPlayer.bind(this);
@@ -18,26 +19,27 @@ class PlayerForm extends Component {
   }
 
   inputValidation() {
-    let weight = document.forms["playerform"]["weight"].value;
-    if (weight <= 0) {
+    let age = document.forms["ballform"]["age"].value;
+    if (age <= 15) {
       this.setState({
         weight: 0,
       });
-      alert("A player can't weigth 0 or less, try again!");
+      alert("A customer can't be younger than 15 years old!");
       return false;
     }
     return true;
   }
 
-  createPlayer() {
-    let player = {
-      name: this.state.name,
-      length: this.state.length,
-      weight: this.state.weight,
-      club: this.state.club,
-      position: this.state.position,
+  createBall() {
+    let ball = {
+      receiver: this.state.receiver,
+      age: this.state.age,
+      country: this.state.country,
+      brand: this.state.brand,
+      size: this.state.size,
+      colors: this.state.colors,
     };
-    return player;
+    return ball;
   }
 
   handleInputChange(event) {
@@ -88,71 +90,70 @@ class PlayerForm extends Component {
           </label>
           <br />
           <label>
-            Country
+            Age
             <input
-              name={"country"}
-              type={"text"}
+              name={"age"}
+              type={"number"}
               required
-              value={this.state.country}
+              value={this.state.age}
               onChange={this.handleInputChange}
             />
+          </label>
+          <br />
+          <label>
+            Country
+            <select
+              name={"country"}
+              value={this.state.country}
+              onChange={this.handleInputChange}
+            >
+              <option value="sweden">Sweden</option>
+              <option value="denmark">Denmark</option>
+              <option value="finland">Finland</option>
+              <option value="norway">Norway</option>
+            </select>
           </label>
           <br />
           <label>
             Brand
-            <input
+            <select
               name={"brand"}
-              type={"text"}
-              required
               value={this.state.brand}
               onChange={this.handleInputChange}
-            />
+            >
+              <option value="adidas">Adidas</option>
+              <option value="nike">Nike</option>
+              <option value="puma">Puma</option>
+              <option value="select">Select</option>
+            </select>
           </label>
           <br />
           <label>
             Size
-            <input
+            <select
               name={"size"}
-              type={"number"}
-              required
               value={this.state.size}
               onChange={this.handleInputChange}
-            />
+            >
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
           </label>
           <br />
           <label>
-            Weigth
-            <input
-              name={"weigth"}
-              type={"number"}
-              required
-              value={this.state.weigth}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            Club
-            <input
-              name={"club"}
-              type={"text"}
-              required
-              value={this.state.club}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            Position
+            Colors
             <select
-              name={"position"}
-              value={this.state.position}
+              name={"color"}
+              value={this.state.color}
               onChange={this.handleInputChange}
             >
-              <option value="goalkeeper">Goalkeeper</option>
-              <option value="defender">Defender</option>
-              <option value="midfielder">Midfielder</option>
-              <option value="forward">Forward</option>
+              <option value="blackwhite">Black and white</option>
+              <option value="whiteblue">White and Blue</option>
+              <option value="white">White</option>
+              <option value="black">Black</option>
+              <option value="red">Red</option>
             </select>
           </label>
           <br />
@@ -163,4 +164,4 @@ class PlayerForm extends Component {
   }
 }
 
-export default PlayerForm;
+export default FootballForm;
